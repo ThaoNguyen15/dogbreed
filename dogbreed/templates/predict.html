@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<style>
+    img.resize {
+      max-width:50%;
+      max-height:50%;
+    }
+</style>
+<title>Dog Breed Predictor</title>
+</head>
+<body>
+{% if img_path %}
+    <img class="resize" src="{{ img_path }}" alt="Uploaded File"/>
+    {% if dog_human %}
+    <p> Hello, {{ species }}!</p>
+    <p> You look like a {{ dog_breed }}</p>
+    {% else %}
+    <p> Sorry, we couldn't recognize you as a human nor a dog</p>
+    {% endif %}
+{% endif %}
+<h1>Upload new File</h1>
+<form method=post enctype=multipart/form-data>
+  <p><input type=file name=file>
+    <input type=submit value=Upload>
+</form>
+</body>
+</html>
+
